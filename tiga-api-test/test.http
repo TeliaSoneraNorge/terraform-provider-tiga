@@ -1,0 +1,107 @@
+# For use with https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+# Copy `.env.example` to `.env` and replace the example token with a valid token
+@base_url=https://api.tiga-sandbox.teliacompany.net
+#@base_url=http://127.0.0.1:8080
+
+###
+
+GET {{base_url}}
+
+###
+
+GET {{base_url}}/v1/userRoles?systemId=Hid100000006&roleName=AWS_999999990100_Administrator
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+
+###
+
+GET "http://localhost:8080/v1/userRoles?systemId=Hid100000006%!(EXTRA string=&RoleName=AWS_999999990100_Administrator)"
+
+###
+
+POST {{base_url}}/v1/userRoles?minApprovalLevel=manager
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+content-type: application/json
+
+{
+  "name": "Tyra-inte-kasta-telefonen-i-golvet-5",
+  "validFrom": "2023-04-27T12:55:57.978Z",
+  "validTo": "2025-02-02T12:55:57.978Z",
+  "preventSelfService": false,
+  "description": "A made up description",
+    "systemInstance": "/v1/systems/HID100000006/instances/HID100000006.TEST",
+  "provisioningType": "activeDirectory",
+  "approvalSettings": {
+    "skipSystemOwnerApproval": true,
+    "skipManagerApproval": true,
+    "skipRoleOwnerApproval": true,
+    "namedApprovers": [
+      "sbh881"
+    ],
+    "securityClearanceApprovers": [
+      "nju840"
+    ]
+  },
+  "owners": [
+    "zkv293", "mdr449"
+  ],
+  "userRequirements": {
+    "digitalCommittment": false,
+    "termsAndConditions": "/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+    "countries": [
+      "SE", "NO"
+    ],
+    "businessContexts": [
+      "/v1/businessContexts/Any"
+    ]
+  },
+  "childRoles": null
+}
+###
+
+GET {{base_url}}/api/Tiga/GetRole/hid100006532/AWS_FredriksOwnAccount_Prod HTTP/2
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+
+###
+
+GET {{base_url}}/healthcheck HTTP/2
+
+###
+
+POST {{base_url}}/v1/userRoles?minApprovalLevel=manager
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+content-type: application/json
+
+{
+    "name": "Tyra-inte-kasta-telefonen-i-golvet-6",
+    "validFrom": "2023-05-02T12:55:57.978Z",
+    "validTo": "2024-04-25T12:55:57.978Z",
+    "preventSelfService": false,    
+    "description": "AWS_999999990100_Administrator",    
+    "systemInstance": "/v1/systems/HID100000006/instances/HID100000006.TEST",
+    "provisioningType": "activeDirectory",    
+    "approvalSettings": {
+        "skipSystemOwnerApproval": true,      
+        "skipManagerApproval": true,        
+        "skipRoleOwnerApproval": true,        
+        "namedApprovers": [
+            "sbh881"
+        ],
+        "securityClearanceApprovers": [
+            "nju840"
+        ]
+    },  
+    "owners": [
+        "zkv293", "mdr449"
+    ],
+    "userRequirements": {
+        "digitalCommittment": false,
+        "termsAndConditions": "/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+        "countries": [
+          "SE", "NO"
+        ],
+        "businessContexts": [
+            "/v1/businessContexts/Any"
+        ]        
+    },
+    "childRoles": null
+}

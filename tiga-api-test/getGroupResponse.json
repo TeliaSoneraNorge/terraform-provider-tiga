@@ -1,0 +1,47 @@
+HTTP/1.1 200 OK
+Date: Thu, 27 Apr 2023 11:43:19 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+Strict-Transport-Security: max-age=15724800; includeSubDomains
+
+[
+  {
+    "name": "Tyra-inte-kasta-telefonen-i-golvet-3",
+    "id": "HID100000006.TEST.TYRA-INTE-KASTA-TELEFONEN-I-GOLVET-3.APP",
+    "provisioningRef": "HID100000006_TEST_TYRA-INTE-KASTA-TELEFONEN-I-GOLVET-3",
+    "validFrom": "2023-04-27T12:55:57.978+00:00",
+    "validTo": "2025-02-02T12:55:57.978+00:00",
+    "preventSelfService": false,
+    "description": "A made up description",
+    "systemInstance": "/v1/systems/HID100000006/instances/HID100000006.TEST",
+    "provisioningType": "activeDirectory",
+    "approvalSettings": {
+      "skipSystemOwnerApproval": true,
+      "skipManagerApproval": true,
+      "skipRoleOwnerApproval": true,
+      "namedApprovers": [
+        "sbh881"
+      ],
+      "securityClearanceApprovers": [
+        "nju840"
+      ]
+    },
+    "owners": [
+      "zkv293",
+      "mdr449"
+    ],
+    "userRequirements": {
+      "digitalCommittment": false,
+      "termsAndConditions": "/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+      "countries": [
+        "NO",
+        "SE"
+      ],
+      "businessContexts": [
+        "/v1/businessContexts/Any"
+      ]
+    },
+    "childRoles": null
+  }
+]
