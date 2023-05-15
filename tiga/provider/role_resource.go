@@ -223,7 +223,7 @@ func (r *roleResource) Create(ctx context.Context, req resource.CreateRequest, r
 	role, err := r.client.CreateRole(newRole)
 	if err != nil {
 		resp.Diagnostics.AddError(
-			"Error creating order",
+			"Error creating role",
 			"Could not create Role, unexpected error: "+err.Error(),
 		)
 		return
