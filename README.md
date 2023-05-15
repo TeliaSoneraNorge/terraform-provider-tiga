@@ -5,6 +5,12 @@ To try this provider, follow these steps:
 
 Download the binary for your specific OS.
 You can find them in the latest release package.
+Or build from source. Rename the file and make sure the filename is:
+
+```
+terraform-provider-tiga
+
+```
 
 copy/create the .terraformrc -file into your home directory. 
 Change the following line inside the .terraformrc -file: 
