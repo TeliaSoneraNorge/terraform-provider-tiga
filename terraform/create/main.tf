@@ -8,20 +8,19 @@ terraform {
 }
 
 provider "tiga" {
-  # host = "https://api.tiga-sandbox.teliacompany.net"
   we_agree_to_terms_and_conditions = true
 }
 
-resource "tiga_roleresource" "AWS_999999990100_Administrator_Role" {
+resource "tiga_role" "AWS_00000000000004_Administrator_Role" {
   
     hid = "Hid100000006"
     instance = "HID100000006.TEST"
-    name = "AWS_00000000000002_Administrator_Role"
+    name = "AWS_00000000000004_Administrator_Role"
     template = "Amazon Web Services Cloud (AWS)"
     valid_from = "2023-05-03T13:13:13Z"
     valid_to = "2024-04-25T13:13:13Z"
     prevent_self_service = false
-    description = "AWS_999999990100_Administrator"
+    description = "AWS_00000000000004_Administrator_Role"
     provisioning_type = "activeDirectory"
 
     owners = [
@@ -61,5 +60,5 @@ resource "tiga_roleresource" "AWS_999999990100_Administrator_Role" {
 }
 
 output "role_admin" {
-  value = tiga_roleresource.AWS_999999990100_Administrator_Role
+  value = tiga_role.AWS_00000000000004_Administrator_Role
 }

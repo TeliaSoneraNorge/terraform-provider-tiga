@@ -65,7 +65,7 @@ type roleUserRequirements struct {
 
 // Metadata returns the data source type name.
 func (r *roleResource) Metadata(_ context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_roleresource"
+	resp.TypeName = req.ProviderTypeName + "_role"
 }
 
 // Schema defines the schema for the data source.
