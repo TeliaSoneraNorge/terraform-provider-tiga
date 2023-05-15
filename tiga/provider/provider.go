@@ -49,14 +49,14 @@ func (p *tigaProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp 
 			},
 			"we_agree_to_terms_and_conditions": schema.BoolAttribute{
 				Description: "You confirm that you agree to the terms and conditions to use Tiga to create 'resources' (roles)\n" +
-					"you can read more about it here: https://api.tiga-sandbox.teliacompany.net/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+					"you can read more about it here: https://itwiki.atlassian.teliacompany.net/display/TIGA/Digital+Commitment",
 				Required: true,
 			},
 		},
 	}
 }
 
-// Configure prepares a Tiga API client for data sources and resources.
+// Configure prepares a Tiga API client for resources.
 func (p *tigaProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	tflog.Info(ctx, "Configuring Tiga client")
 
@@ -67,9 +67,6 @@ func (p *tigaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	// If practitioner provided a configuration value for any of the
-	// attributes, it must be a known value.
 
 	if config.Host.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(
@@ -82,10 +79,10 @@ func (p *tigaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 
 	if !config.TermsAndConditions.ValueBool() {
 		resp.Diagnostics.AddAttributeError(
-			path.Root("jwtToken"),
+			path.Root("we_agree_to_terms_and_conditions"),
 			"Must agree to terms and conditions",
 			"You must confirm that you agree to the terms and conditions to use Tiga to create 'resources' (roles). "+
-				"you can read more about it here: https://api.tiga-sandbox.teliacompany.net/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+				"you can read more about it here: https://itwiki.atlassian.teliacompany.net/display/TIGA/Digital+Commitment",
 		)
 	}
 
@@ -120,13 +117,11 @@ func (p *tigaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 	}
 
 	ctx = tflog.SetField(ctx, "tiga_host", host)
-	ctx = tflog.MaskFieldValuesWithFieldKeys(ctx, "tiga_password")
 
 	tflog.Debug(ctx, "Creating Tiga client")
 
 	// Create a new Tiga client using the configuration values
-	client, err := tct.New(&tct.Caller{})
-	//client, err := NewClient(&host)
+	client, err := tct.New(&tct.Caller{}, true)
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to Create Tiga API Client",
@@ -135,21 +130,9 @@ func (p *tigaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 		)
 		return
 	}
-	// if client.Token == nil {
-	// 	err = client.AuthorizeSIDM()
-	// 	if err != nil {
-	// 		resp.Diagnostics.AddError(
-	// 			"Unable to Authorize with SIDM",
-	// 			"An unexpected error occurred when authorizing against SIDM. "+
-	// 				"Tiga Provider Error: "+err.Error(),
-	// 		)
-	// 		return
-	// 	}
-	// }
 
-	// Make the Tiga client available during DataSource and Resource
+	// Make the Tiga client available during Resource
 	// type Configure methods.
-	resp.DataSourceData = client
 	resp.ResourceData = client
 
 	tflog.Info(ctx, "Configured Tiga client", map[string]any{"success": true})
@@ -157,9 +140,7 @@ func (p *tigaProvider) Configure(ctx context.Context, req provider.ConfigureRequ
 
 // DataSources defines the data sources implemented in the provider.
 func (p *tigaProvider) DataSources(_ context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{
-		// NewCoffeesDataSource,
-	}
+	return []func() datasource.DataSource{}
 }
 
 // Resources defines the resources implemented in the provider.

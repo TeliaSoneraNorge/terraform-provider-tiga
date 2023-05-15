@@ -15,6 +15,12 @@ Authorization: Bearer {{$dotenv SIDM_TOKEN}}
 ###
 
 GET "http://localhost:8080/v1/userRoles?systemId=Hid100000006%!(EXTRA string=&RoleName=AWS_999999990100_Administrator)"
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+
+###
+
+GET https://api.tiga-sandbox.teliacompany.net/v1/userRoles?systemId=Hid100000006&roleName=Tyra-inte-kasta-telefonen-i-golvet-20
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
 
 ###
 
@@ -23,9 +29,9 @@ Authorization: Bearer {{$dotenv SIDM_TOKEN}}
 content-type: application/json
 
 {
-  "name": "Tyra-inte-kasta-telefonen-i-golvet-5",
-  "validFrom": "2023-04-27T12:55:57.978Z",
-  "validTo": "2025-02-02T12:55:57.978Z",
+  "name": "Tyra-inte-kasta-telefonen-i-golvet-23",
+  "validFrom": "2023-05-08T12:12:12Z",
+  "validTo": "2025-02-02T12:12:12Z",
   "preventSelfService": false,
   "description": "A made up description",
     "systemInstance": "/v1/systems/HID100000006/instances/HID100000006.TEST",
@@ -104,4 +110,85 @@ content-type: application/json
         ]        
     },
     "childRoles": null
+}
+
+###
+POST {{base_url}}/v1/userRoles?minApprovalLevel=manager
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+content-type: application/json
+
+{
+  "name": "TIGA-API-Verdsfsdfsdf",
+  "validFrom": "2023-02-02T12:55:57.978Z",
+  "validTo": "9999-12-31T22:59:00.00Z",
+  "preventSelfService": false,
+  "description": "TIGA-API-Verify7",
+  "systemInstance": "/v1/systems/HID100000006/instances/HID100000006.TEST",
+  "provisioningType": "activeDirectory",
+  "approvalSettings": {
+    "skipSystemOwnerApproval": true,
+    "skipManagerApproval": true,
+    "skipRoleOwnerApproval": true,
+    "namedApprovers": [
+      "sbh881"
+    ],
+    "securityClearanceApprovers": [
+      "nju840"
+    ]
+  },
+  "owners": [
+    "zkv293", "mdr449"
+  ],
+  "userRequirements": {
+    "digitalCommittment": false,
+    "termsAndConditions": "/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+    "countries": [
+      "SE", "NO"
+    ],
+    "businessContexts": [
+      "/v1/businessContexts/Any"
+    ]
+  },
+  "childRoles": null
+}
+
+###
+
+POST {{base_url}}/v1/userRoles?minApprovalLevel=manager&namingTemplate=Amazon+Web+Services+Cloud+(AWS)
+Authorization: Bearer {{$dotenv SIDM_TOKEN}}
+content-type: application/json
+
+{
+  "name": "AWS 123456 TIGA-API-Verify25",
+  "validFrom": "2023-05-01T12:55:57+00:00",
+  "validTo": "2024-05-01T12:55:57+00:00",
+  "preventSelfService": false,
+  "description": "TIGA-API-Verify25",
+  "systemInstance": "/v1/systems/HID100000006/instances/HID100000006.TEST",
+  "provisioningType": "activeDirectory",
+  "approvalSettings": {
+    "skipSystemOwnerApproval": true,
+    "skipManagerApproval": true,
+    "skipRoleOwnerApproval": true,
+    "namedApprovers": [
+      "sbh881"
+    ],
+    "securityClearanceApprovers": [
+      "nju840"
+    ]
+  },
+  "owners": [
+    "zkv293", "mdr449"
+  ],
+  "userRequirements": {
+    "digitalCommittment": false,
+    "termsAndConditions": "/v1/termsAndConditions/Terms+and+Conditions+Jfrog",
+    "countries": [
+      "SE"
+    ],
+    "businessContexts": [
+      "/v1/businessContexts/Any"
+    ]
+  },
+  "childRoles": null
 }
